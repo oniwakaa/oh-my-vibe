@@ -1,0 +1,96 @@
+# oh-my-vibe — Vibe CLI Global Configuration Template
+# Copy this file to ~/.vibe/config.toml (or .vibe/config.toml at project root).
+# Lines starting with # are comments and can be removed.
+#
+# Full reference: https://github.com/mistralai/mistral-vibe
+
+# ---------------------------------------------------------------------------
+# Model
+# ---------------------------------------------------------------------------
+
+# Primary model for all orchestrator agents.
+# Recommended: devstral-2 (higher quality) or devstral-small (faster/cheaper)
+active_model = "devstral-2"
+
+# Default system prompt to use when no agent-specific prompt is configured.
+# Resolved to ~/.vibe/prompts/hercules.md
+system_prompt_id = "hercules"
+
+# ---------------------------------------------------------------------------
+# Session Logging (required for --continue / --resume)
+# ---------------------------------------------------------------------------
+
+# Enable session logging so you can resume sessions.
+# session_logging = true
+
+# ---------------------------------------------------------------------------
+# Auto-Update
+# ---------------------------------------------------------------------------
+
+# Set to false if you manage Vibe versions yourself.
+# enable_auto_update = true
+
+# ---------------------------------------------------------------------------
+# Skills — Discovery Paths
+# ---------------------------------------------------------------------------
+
+# To load the oh-my-vibe skills, add the path to the skills/ directory below.
+# Replace /path/to/oh-my-vibe with the actual clone path on your system.
+#
+# skill_paths = ["/path/to/oh-my-vibe/skills"]
+
+# ---------------------------------------------------------------------------
+# MCP Servers
+# ---------------------------------------------------------------------------
+# IMPORTANT: MCP configuration is GLOBAL and lives here only.
+# Do NOT add [[mcp_servers]] blocks to individual agent TOML files.
+
+# --- Tier 1: websearch (Exa API) ---
+# Provides web search capability for agents that need current information.
+# Requires an EXA_API_KEY environment variable (get one at exa.ai).
+[[mcp_servers]]
+name           = "websearch"
+transport      = "http"
+url            = "https://api.exa.ai/mcp"
+api_key_env    = "EXA_API_KEY"
+api_key_header = "x-api-key"
+api_key_format = "{token}"
+
+# --- Tier 1: context7 (Library Documentation) ---
+# Fetches up-to-date library docs and API references.
+# No API key required.
+[[mcp_servers]]
+name      = "context7"
+transport = "streamable-http"
+url       = "https://mcp.context7.com/mcp"
+
+# --- Tier 1: grep_app (OSS Code Search) ---
+# Searches across public open-source repositories for patterns and examples.
+# No API key required.
+[[mcp_servers]]
+name      = "grep_app"
+transport = "streamable-http"
+url       = "https://grep.app/mcp"
+
+# ---------------------------------------------------------------------------
+# Tool Permissions (optional overrides)
+# ---------------------------------------------------------------------------
+# You can tune per-tool permissions here. Options: "always", "ask", "never"
+# Defaults are inherited from the active agent's safety level.
+#
+# [tools.bash]
+# permission = "ask"
+#
+# [tools.write_file]
+# permission = "ask"
+#
+# [tools.search_replace]
+# permission = "ask"
+
+# ---------------------------------------------------------------------------
+# Skill Filters (optional)
+# ---------------------------------------------------------------------------
+# Selectively enable or disable skills by name or glob pattern.
+#
+# enabled_skills  = ["ultrawork", "plan", "interview-me"]
+# disabled_skills = ["ulw-loop"]   # disable looping skills if not wanted

@@ -1,0 +1,16 @@
+display_name      = "Vulcan"
+description       = "Deep autonomous worker. Give a goal; Vulcan forges the solution independently — the divine craftsman who needs no instructions, only a purpose."
+safety            = "neutral"
+auto_approve      = false
+agent_type        = "primary"
+system_prompt_id  = "vulcan"
+enabled_tools     = [
+  "read_file",
+  "write_file",
+  "bash",
+  "grep",
+  "search_replace",
+  "todo",
+  "task",
+  "ask_user_question",
+]

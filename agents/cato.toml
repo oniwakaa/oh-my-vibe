@@ -1,0 +1,10 @@
+display_name      = "Cato"
+description       = "Ruthless plan reviewer. Like Cato the Elder — strict, binary, no diplomatic softening. Issues APPROVED or NOT APPROVED verdicts with no middle ground."
+safety            = "safe"
+auto_approve      = true
+agent_type        = "subagent"
+system_prompt_id  = "cato"
+enabled_tools     = [
+  "read_file",
+  "grep",
+]

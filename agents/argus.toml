@@ -1,0 +1,10 @@
+display_name      = "Argus"
+description       = "Vision and screenshot analysis agent. Like Argus Panoptes with his hundred eyes — reads images, UI states, diagrams, and error screenshots, missing nothing."
+safety            = "safe"
+auto_approve      = true
+agent_type        = "subagent"
+system_prompt_id  = "argus"
+enabled_tools     = [
+  "read_file",
+  "grep",
+]

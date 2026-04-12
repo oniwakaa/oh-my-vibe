@@ -1,0 +1,11 @@
+display_name      = "Minerva"
+description       = "Read-only architecture and debugging consultant. Goddess of wisdom and strategic counsel — illuminates decisions, never touches files."
+safety            = "safe"
+auto_approve      = true
+agent_type        = "primary"
+system_prompt_id  = "minerva"
+enabled_tools     = [
+  "read_file",
+  "bash",
+  "grep",
+]

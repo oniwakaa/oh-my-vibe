@@ -1,0 +1,15 @@
+display_name      = "Achates"
+description       = "Faithful implementation subagent. Receives scoped tasks from Hercules or Fabius and executes them completely — fidus Achates, the loyal companion who gets things done."
+safety            = "neutral"
+auto_approve      = false
+agent_type        = "subagent"
+system_prompt_id  = "achates"
+enabled_tools     = [
+  "read_file",
+  "write_file",
+  "bash",
+  "grep",
+  "search_replace",
+  "todo",
+  "task",
+]

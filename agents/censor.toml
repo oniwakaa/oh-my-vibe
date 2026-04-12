@@ -1,0 +1,10 @@
+display_name      = "Censor"
+description       = "Plan gap analyzer. Like the Roman magistrate who examined records for errors and omissions — finds missing decisions and unresolved ambiguities before implementation begins."
+safety            = "safe"
+auto_approve      = true
+agent_type        = "subagent"
+system_prompt_id  = "censor"
+enabled_tools     = [
+  "read_file",
+  "grep",
+]

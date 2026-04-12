@@ -1,0 +1,25 @@
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# Vibe session data (project-local)
+.vibe/sessions/
+.vibe/*.log
+
+# Plan files (project-local, not committed)
+# Remove this line if you want to commit Janus plan files
+.vibe/plan-*.md
+
+# Editor config (optional – keep if your team uses it)
+# .vscode/
+# .idea/

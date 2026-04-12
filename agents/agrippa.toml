@@ -1,0 +1,11 @@
+display_name      = "Agrippa"
+description       = "Fast read-only codebase discovery agent. Like Agrippa who surveyed and mapped the Roman world — finds file locations, patterns, and conventions with precision."
+safety            = "safe"
+auto_approve      = true
+agent_type        = "subagent"
+system_prompt_id  = "agrippa"
+enabled_tools     = [
+  "read_file",
+  "bash",
+  "grep",
+]

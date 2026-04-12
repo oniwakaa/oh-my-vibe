@@ -1,0 +1,16 @@
+display_name      = "Fabius"
+description       = "Todo orchestrator. Executes Janus plans methodically — like Fabius Maximus, steady, systematic, coordinating subagents without rushing to a single unverified step."
+safety            = "neutral"
+auto_approve      = false
+agent_type        = "primary"
+system_prompt_id  = "fabius"
+enabled_tools     = [
+  "read_file",
+  "write_file",
+  "bash",
+  "grep",
+  "search_replace",
+  "todo",
+  "task",
+  "ask_user_question",
+]

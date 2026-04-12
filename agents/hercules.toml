@@ -1,0 +1,16 @@
+display_name      = "Hercules"
+description       = "Main orchestrator. Drives every task to full, verified completion through planning and parallel delegation — like the twelve labors, he does not stop until done."
+safety            = "neutral"
+auto_approve      = false
+agent_type        = "primary"
+system_prompt_id  = "hercules"
+enabled_tools     = [
+  "read_file",
+  "write_file",
+  "bash",
+  "grep",
+  "search_replace",
+  "todo",
+  "task",
+  "ask_user_question",
+]

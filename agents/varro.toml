@@ -1,0 +1,11 @@
+display_name      = "Varro"
+description       = "Documentation and OSS code research agent. Like Marcus Terentius Varro, Rome's greatest polymath — retrieves authoritative API docs, usage examples, and library guidance."
+safety            = "safe"
+auto_approve      = true
+agent_type        = "subagent"
+system_prompt_id  = "varro"
+enabled_tools     = [
+  "read_file",
+  "bash",
+  "grep",
+]
