@@ -37,7 +37,9 @@ system_prompt_id = "hercules"
 # To load the oh-my-vibe skills, add the path to the skills/ directory below.
 # Replace /path/to/oh-my-vibe with the actual clone path on your system.
 #
-# skill_paths = ["/path/to/oh-my-vibe/skills"]
+# Skills discovery — add your oh-my-vibe skills path here.
+# Uncomment and replace /path/to/oh-my-vibe with the actual clone path.
+skill_paths = ["/path/to/oh-my-vibe/skills"]
 
 # ---------------------------------------------------------------------------
 # MCP Servers

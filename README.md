@@ -4,7 +4,7 @@ A community port of [oh-my-openagent](https://github.com/code-yeongyu/oh-my-open
 for [Mistral Vibe CLI](https://github.com/mistralai/mistral-vibe).
 
 oh-my-vibe brings the full oh-my-openagent multi-agent ecosystem — 11 specialized
-agents and 7 slash-command skills — to the Mistral Vibe CLI, optimized for
+agents and 10 slash-command skills — to the Mistral Vibe CLI, optimized for
 [Devstral](https://huggingface.co/mistralai/Devstral-Small-2505).
 
 ---
@@ -30,14 +30,14 @@ agents and 7 slash-command skills — to the Mistral Vibe CLI, optimized for
 | Command | Description |
 |---|---|
 | `/ultrawork` | Full-auto mode: intent gate → plan → delegate → verify |
-| `/ulw` | Short alias for `/ultrawork` |
+| `/ulw` | Alias for `/ultrawork` |
+| `/ulw-loop` | Continuous ultrawork loop until todo is empty |
 | `/interview-me` | Janus interview mode: questions → plan |
 | `/plan` | Direct planning mode (no interview) |
 | `/start-work` | Hand latest Janus plan to Fabius |
 | `/censor` | Gap analysis — find what the plan is missing |
 | `/cato` | Plan review — APPROVED / NOT APPROVED verdict |
 | `/init-deep` | Generate AGENTS.md hierarchy for the current project |
-| `/ulw-loop` | Continuous ultrawork loop until todo is empty |
 | `/ralph-loop` | Retry loop for the current task until 100% done |
 
 ---
@@ -52,7 +52,15 @@ curl -LsSf https://mistral.ai/vibe/install.sh | bash
 
 ### 2. Install oh-my-vibe
 
-See [INSTALL.md](./INSTALL.md) for the one-line automated install prompt.
+Paste this into any Vibe CLI session from inside the oh-my-vibe directory:
+
+```
+Install and configure oh-my-vibe by following the instructions here:
+https://raw.githubusercontent.com/code-yeongyu/oh-my-vibe/main/INSTALL.md
+```
+
+The agent will read the install instructions and set everything up automatically.
+See [INSTALL.md](./INSTALL.md) for details.
 
 ### 3. Configure
 
@@ -129,7 +137,7 @@ individual agent TOML files.
 - **Devstral-optimized prompts.** All 11 prompts are written for Devstral's
   principle-driven, XML-tagged style — not copied verbatim from the Claude-specific
   source prompts.
-- **Faithful port.** All 11 agents and all 7 skills from oh-my-openagent are
+- **Faithful port.** All 11 agents and all 10 skills from oh-my-openagent are
   preserved. No agent was collapsed or omitted.
 - **LLM-driven install.** No shell scripts. The install is driven by pasting a prompt
   into Vibe CLI — the agent copies all files to the right locations.

@@ -56,11 +56,11 @@ files with YAML frontmatter. The following skill categories exist in source:
 
 | Skill / Command | Purpose |
 |---|---|
-| `ultrawork` / `ulw` | Trigger Hercules full-auto mode: intent gate → plan → delegate → verify |
-| `ulw` | Short alias for `ultrawork` (separate skill, same behavior) |
+| `ultrawork` | Trigger Hercules full-auto mode: intent gate → plan → delegate → verify |
+| `ulw` | Alias for `ultrawork` (separate skill file, same behavior) |
+| `ulw-loop` | Continuous ultrawork loop (runs until explicitly stopped) |
 | `init-deep` | Generate hierarchical AGENTS.md files across the project tree |
 | `start-work` | Activate Fabius on the latest Janus plan |
-| `ulw-loop` | Continuous ultrawork loop (runs until explicitly stopped) |
 | `ralph-loop` | Retry loop — continues until 100% done |
 | `interview-me` | Janus interview mode entry point |
 | `plan` | Alias for Janus planning mode |
@@ -70,7 +70,7 @@ files with YAML frontmatter. The following skill categories exist in source:
 ### MCP Servers (Three-Tier System)
 
 **Tier 1 — Built-in (remote HTTP):**
-- `websearch` — web search via Exa or Tavily API
+- `websearch` — web search via Exa API
 - `context7` — library documentation lookup
 - `grep_app` — OSS code search across public repos
 
@@ -142,11 +142,11 @@ oh-my-vibe/
     │   └── SKILL.md
     ├── ulw/
     │   └── SKILL.md
+    ├── ulw-loop/
+    │   └── SKILL.md
     ├── init-deep/
     │   └── SKILL.md
     ├── start-work/
-    │   └── SKILL.md
-    ├── ulw-loop/
     │   └── SKILL.md
     ├── ralph-loop/
     │   └── SKILL.md
@@ -348,7 +348,7 @@ system running on Mistral Vibe CLI. Your model is Devstral.
 3. **MCP config is global.** All `[[mcp_servers]]` blocks go in `config.template.toml`.
    Individual agent TOML files must NOT contain MCP config.
 
-4. **Skills transfer with minimal changes.** Port all 7 skills. The SKILL.md format is
+4. **Skills transfer with minimal changes.** Port all 10 skills. The SKILL.md format is
    compatible — adapt the body workflow prose for Devstral's principle-driven style.
 
 5. **The install experience is LLM-driven.** No shell scripts. No manual file-copying.
@@ -375,7 +375,7 @@ Execute in this exact sequence to avoid forward references:
 1. `config/config.template.toml` — global config with all MCP servers and field comments
 2. `prompts/*.md` — all 11 system prompts (Devstral-optimized)
 3. `agents/*.toml` — all 11 agent TOML files (referencing prompts by system_prompt_id)
-4. `skills/*/SKILL.md` — all 7 skills with frontmatter and Devstral-adapted body
+4. `skills/*/SKILL.md` — all 10 skills with frontmatter and Devstral-adapted body
 5. `README.md` — project overview, quickstart, agent roster table
 6. `INSTALL.md` — exact install prompt (written last, after all paths confirmed)
 
