@@ -23,3 +23,6 @@ venv/
 # Editor config (optional – keep if your team uses it)
 # .vscode/
 # .idea/
+
+# OpenCode cache/state
+.omc/
