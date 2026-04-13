@@ -64,9 +64,17 @@ ls ~/.vibe/skills/
 
 Confirm 11 agents, 11 prompts, and 10 skill directories are present.
 
-### Step 6: Completion
+### Step 6: EXA Integration
 
-Print a summary: which files were copied, what config action was taken, and the command to start:
+Pause and ask the user exactly:
+"Do you want to add your EXA API key now? This enables web search capabilities across all agents. (yes / skip)"
+
+- If the user answers **yes**: Prompt them to paste the key. Once provided, append `EXA_API_KEY="their_key_here"` into `~/.vibe/.env` (do NOT hardcode any key in this prompt or file). Make sure it handles appending appropriately.
+- If the user answers **skip**: Continue the install without asking for the key and add a visible note in the final Completion summary that EXA search is inactive and can be enabled later.
+
+### Step 7: Completion
+
+Print a summary: which files were copied, what config action was taken, whether EXA search is active or skipped, and the command to start:
 
 ```bash
 vibe --agent hercules

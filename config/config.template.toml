@@ -12,6 +12,9 @@
 # Recommended: devstral-2 (higher quality) or devstral-small (faster/cheaper)
 active_model = "devstral-2"
 
+# Default agent handler for all user queries, if not specified via CLI.
+default_agent = "hercules"
+
 # Default system prompt to use when no agent-specific prompt is configured.
 # Resolved to ~/.vibe/prompts/hercules.md
 system_prompt_id = "hercules"

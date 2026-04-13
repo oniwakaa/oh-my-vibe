@@ -6,6 +6,9 @@
 
 oh-my-vibe is a community-installable agent and skill ecosystem for Mistral Vibe CLI.
 
+**Session Startup Instruction for Agents:**
+Whenever you start a new conversation in this workspace, proactively begin your first response with a brief 1-3 line confirmation banner stating that the oh-my-vibe agent ecosystem is loaded and active.
+
 Agent names are preserved faithfully from the source. No agent is collapsed, skipped,
 or renamed in this phase. Capabilities are ported as-is; prompt style is adapted
 for Devstral based on verified guidance (see Devstral Prompt Guidance section).

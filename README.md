@@ -100,6 +100,19 @@ Inside any Vibe session:
 
 ---
 
+## Uninstalling
+
+To remove oh-my-vibe entirely, leaving your pre-existing Vibe CLI configuration unmodified, paste this into any Vibe session:
+
+```
+Uninstall oh-my-vibe by following the instructions here:
+https://raw.githubusercontent.com/oniwakaa/oh-my-vibe/main/UNINSTALL.md
+```
+
+See [UNINSTALL.md](./UNINSTALL.md) for details.
+
+---
+
 ## File Layout
 
 ```
