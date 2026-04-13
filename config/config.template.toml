@@ -11,6 +11,7 @@
 # Primary model for all orchestrator agents.
 # Recommended: devstral-2 (higher quality) or devstral-small (faster/cheaper)
 active_model = "devstral-2"
+include_model_info = true
 
 # Default agent handler for all user queries, if not specified via CLI.
 default_agent = "hercules"
