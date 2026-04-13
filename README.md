@@ -1,9 +1,8 @@
 # oh-my-vibe
 
-A community port of [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)
-for [Mistral Vibe CLI](https://github.com/mistralai/mistral-vibe).
+An agent and skill ecosystem for [Mistral Vibe CLI](https://github.com/mistralai/mistral-vibe).
 
-oh-my-vibe brings the full oh-my-openagent multi-agent ecosystem — 11 specialized
+oh-my-vibe brings a full multi-agent ecosystem — 11 specialized
 agents and 10 slash-command skills — to the Mistral Vibe CLI, optimized for
 [Devstral](https://huggingface.co/mistralai/Devstral-Small-2505).
 
@@ -56,7 +55,7 @@ Paste this into any Vibe CLI session from inside the oh-my-vibe directory:
 
 ```
 Install and configure oh-my-vibe by following the instructions here:
-https://raw.githubusercontent.com/code-yeongyu/oh-my-vibe/main/INSTALL.md
+https://raw.githubusercontent.com/oniwakaa/oh-my-vibe/main/INSTALL.md
 ```
 
 The agent will read the install instructions and set everything up automatically.
@@ -137,17 +136,12 @@ individual agent TOML files.
 - **Devstral-optimized prompts.** All 11 prompts are written for Devstral's
   principle-driven, XML-tagged style — not copied verbatim from the Claude-specific
   source prompts.
-- **Faithful port.** All 11 agents and all 10 skills from oh-my-openagent are
-  preserved. No agent was collapsed or omitted.
+- **Complete Toolkit.** All 11 agents and all 10 skills are included natively.
+  No agent was omitted.
 - **LLM-driven install.** No shell scripts. The install is driven by pasting a prompt
   into Vibe CLI — the agent copies all files to the right locations.
 
 ---
-
-## Source
-
-Ported from [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) (branch: dev)
-by the oh-my-vibe community. Original work by [@code-yeongyu](https://github.com/code-yeongyu).
 
 ## License
 

@@ -1,12 +1,10 @@
 # AGENTS.md — oh-my-vibe
 <!-- Workspace context file for Mistral Vibe CLI (read at session start) -->
-<!-- Source project: github.com/code-yeongyu/oh-my-openagent (branch: dev) -->
 <!-- Target runtime: mistral-vibe (github.com/mistralai/mistral-vibe) -->
 
 ## Project Goal
 
-Port the complete oh-my-openagent agent and skill ecosystem to Mistral Vibe CLI as
-a community-installable project. The ported version is called **oh-my-vibe**.
+oh-my-vibe is a community-installable agent and skill ecosystem for Mistral Vibe CLI.
 
 Agent names are preserved faithfully from the source. No agent is collapsed, skipped,
 or renamed in this phase. Capabilities are ported as-is; prompt style is adapted
@@ -14,10 +12,10 @@ for Devstral based on verified guidance (see Devstral Prompt Guidance section).
 
 ---
 
-## Source Project — oh-my-openagent
+## Project Details
 
-**Repository:** `github.com/code-yeongyu/oh-my-openagent` (branch: dev)
-**Runtime:** OpenCode plugin (npm: `oh-my-opencode` / `oh-my-openagent`)
+**Repository:** `github.com/oniwakaa/oh-my-vibe` (branch: dev)
+**Target Runtime:** mistral-vibe
 **Language:** TypeScript (~1600 source files), Bun runtime
 
 ### Agents (11 total, from `src/agents/`)
@@ -51,7 +49,7 @@ automatically to the right model at runtime:
 
 ### Skills (from `src/features/builtin-skills/skills/`)
 
-oh-my-openagent has a built-in skill system that extends agent behaviors via SKILL.md
+oh-my-vibe has a built-in skill system that extends agent behaviors via SKILL.md
 files with YAML frontmatter. The following skill categories exist in source:
 
 | Skill / Command | Purpose |
@@ -291,7 +289,7 @@ and GPT in how it processes system prompts.
    - Vibe's default is suitable; do not increase unless creativity is explicitly needed.
 
 5. **Avoid over-prompting.**
-   - Do NOT copy oh-my-openagent's Claude prompts verbatim; they are over-specified for
+   - Avoid legacy Claude prompt mechanics; they are over-specified for
      Claude's compliance model. Extract the core intent and rewrite as principles.
    - Each agent prompt should be self-contained and under 400 lines.
 
@@ -390,8 +388,8 @@ Execute in this exact sequence to avoid forward references:
 | Add an MCP server | `config/config.template.toml` under `[[mcp_servers]]` |
 | Change the default model | `config/config.template.toml` → `active_model` |
 | Adjust tool permissions | `config/config.template.toml` → `[tools.<name>]` |
-| Review source agent logic | `github.com/code-yeongyu/oh-my-openagent/tree/dev/src/agents/` |
-| Review source skill logic | `github.com/code-yeongyu/oh-my-openagent/tree/dev/src/features/builtin-skills/` |
+| Review agent configuration | `agents/` |
+| Review skill configuration | `skills/` |
 | Verify Vibe format | `github.com/mistralai/mistral-vibe` README |
 
 ---
@@ -410,9 +408,7 @@ Execute in this exact sequence to avoid forward references:
 
 ## Reference Links
 
-- oh-my-openagent source: `https://github.com/code-yeongyu/oh-my-openagent/tree/dev`
-- oh-my-openagent install guide: `https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/refs/heads/dev/docs/guide/installation.md`
-- oh-my-openagent overview: `https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/refs/heads/dev/docs/guide/overview.md`
+- oh-my-vibe repository: `https://github.com/oniwakaa/oh-my-vibe`
 - Mistral Vibe CLI repo: `https://github.com/mistralai/mistral-vibe`
 - Mistral Vibe install: `curl -LsSf https://mistral.ai/vibe/install.sh | bash`
 - Agent Skills specification: `https://agentskills.io/specification`

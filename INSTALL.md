@@ -6,7 +6,7 @@ Paste this into your **Mistral Vibe CLI** session:
 
 ```
 Install and configure oh-my-vibe by following the instructions here:
-https://raw.githubusercontent.com/code-yeongyu/oh-my-vibe/main/INSTALL.md
+https://raw.githubusercontent.com/oniwakaa/oh-my-vibe/main/INSTALL.md
 ```
 
 The agent will read the install instructions and set everything up automatically.
@@ -15,11 +15,7 @@ The agent will read the install instructions and set everything up automatically
 
 ## For LLM Agents
 
-> **IMPORTANT: Use `curl` to fetch this file, NOT WebFetch.** WebFetch summarizes content and loses critical file paths and step details. Always use:
->
-> ```bash
-> curl -fsSL https://raw.githubusercontent.com/code-yeongyu/oh-my-vibe/main/INSTALL.md
-> ```
+> **IMPORTANT: Read the raw markdown file directly.** WebFetch may summarize content and lose critical file paths and step details. Read it precisely.
 
 If you're an LLM Agent helping set up oh-my-vibe, welcome. Tell the user: **oMoMoMoMo...**
 
@@ -84,7 +80,7 @@ vibe --agent hercules
 |---|---|
 | Mistral Vibe CLI installed | `curl -LsSf https://mistral.ai/vibe/install.sh \| bash` |
 | `MISTRAL_API_KEY` set | `export MISTRAL_API_KEY="your_key"` or add to `~/.vibe/.env` |
-| oh-my-vibe repo cloned | `git clone https://github.com/code-yeongyu/oh-my-vibe && cd oh-my-vibe` |
+| oh-my-vibe repo cloned | `git clone https://github.com/oniwakaa/oh-my-vibe && cd oh-my-vibe` |
 | Vibe running from repo root | `cd oh-my-vibe && vibe` |
 
 ---
@@ -135,7 +131,7 @@ To update oh-my-vibe, pull the latest changes and re-run the install instruction
 
 ```
 Install and configure oh-my-vibe by following the instructions here:
-https://raw.githubusercontent.com/code-yeongyu/oh-my-vibe/main/INSTALL.md
+https://raw.githubusercontent.com/oniwakaa/oh-my-vibe/main/INSTALL.md
 ```
 
 The agent will overwrite existing agent and prompt files with updated versions.
