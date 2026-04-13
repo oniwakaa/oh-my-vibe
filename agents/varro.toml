@@ -7,5 +7,7 @@ system_prompt_id  = "varro"
 enabled_tools     = [
   "read_file",
   "bash",
-  "grep",
+  "websearch",
+  "context7",
+  "grep_app",
 ]

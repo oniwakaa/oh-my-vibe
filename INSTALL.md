@@ -44,7 +44,7 @@ cp -r skills/*/ ~/.vibe/skills/
 
 ### Step 4: Handle config.toml
 
-If `~/.vibe/config.toml` already exists, print a side-by-side diff of `config/config.template.toml` against it. List any `[[mcp_servers]]` blocks from the template that are missing from the existing config — do **not** overwrite; tell the user which lines to add manually.
+If `~/.vibe/config.toml` already exists, parse the existing config and autonomously append any `[[mcp_servers]]` blocks from `config/config.template.toml` that are missing. Do **not** overwrite the entire file; safely append the missing blocks automatically.
 
 If `~/.vibe/config.toml` does **not** exist:
 
@@ -143,5 +143,5 @@ https://raw.githubusercontent.com/oniwakaa/oh-my-vibe/main/INSTALL.md
 ```
 
 The agent will overwrite existing agent and prompt files with updated versions.
-Your `~/.vibe/config.toml` will not be overwritten — only new MCP blocks or
-config entries will be identified and shown to you for manual addition.
+Your `~/.vibe/config.toml` will not be overwritten — new MCP blocks or
+config entries will be automatically appended to your existing configuration.
