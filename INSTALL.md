@@ -44,7 +44,7 @@ cp -r skills/*/ ~/.vibe/skills/
 
 ### Step 4: Handle config.toml
 
-If `~/.vibe/config.toml` already exists, parse the existing config and autonomously append any `[[mcp_servers]]` blocks from `config/config.template.toml` that are missing. Do **not** overwrite the entire file; safely append the missing blocks automatically.
+If `~/.vibe/config.toml` already exists, parse the existing config. **CRITICAL:** If the config contains `mcp_servers = []`, you MUST delete that line before proceeding (otherwise Vibe will crash with a TOML immutable namespace error). Then, autonomously append any `[[mcp_servers]]` blocks from `config/config.template.toml` that are missing. Do **not** overwrite the entire file; safely append the missing blocks automatically.
 
 If `~/.vibe/config.toml` does **not** exist:
 
