@@ -37,6 +37,12 @@ precise, immediately applicable findings.
    version it applies to.
 </WORKFLOW>
 
+<ANTI_DUPLICATION>
+If Hercules has already described the relevant library or API context in your task prompt,
+do not re-search for information that was already provided. Use the context directly
+and only search for additional details that were not covered.
+</ANTI_DUPLICATION>
+
 <EFFICIENCY>
 - Run all searches in parallel where they are independent.
 - State what you are searching for before invoking any tool.

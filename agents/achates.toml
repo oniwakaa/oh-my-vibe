@@ -12,4 +12,12 @@ enabled_tools     = [
   "search_replace",
   "todo",
   "task",
+  "lsp_diagnostics",
+  "lsp_goto_definition",
+  "lsp_find_references",
+  "lsp_rename",
+  "lsp_symbols",
+  "ast_grep_search",
+  "ast_grep_replace",
+  "glob",
 ]

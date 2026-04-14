@@ -78,6 +78,16 @@ name      = "grep_app"
 transport = "streamable-http"
 url       = "https://grep.app/mcp"
 
+# --- Tier 1: playwright (Browser Automation) ---
+# Browser automation via Playwright MCP for testing, screenshots, scraping.
+# Requires Node.js and npx. Install: npx @playwright/mcp@latest --help
+# Uncomment to enable:
+# [[mcp_servers]]
+# name      = "playwright"
+# transport = "stdio"
+# command   = "npx"
+# args      = ["@playwright/mcp@latest"]
+
 # ---------------------------------------------------------------------------
 # Tool Permissions (optional overrides)
 # ---------------------------------------------------------------------------
@@ -92,6 +102,12 @@ url       = "https://grep.app/mcp"
 #
 # [tools.search_replace]
 # permission = "ask"
+#
+# [tools.lsp_rename]
+# permission = "ask"
+#
+# [tools.ast_grep_replace]
+# permission = "ask"
 
 # ---------------------------------------------------------------------------
 # Skill Filters (optional)
@@ -100,3 +116,18 @@ url       = "https://grep.app/mcp"
 #
 # enabled_skills  = ["ultrawork", "plan", "interview-me"]
 # disabled_skills = ["ulw-loop"]   # disable looping skills if not wanted
+
+# ---------------------------------------------------------------------------
+# Agent-Specific Model Overrides (optional)
+# ---------------------------------------------------------------------------
+# Override the model for specific agents. Useful for routing expensive
+# reasoning tasks to more capable models or fast tasks to cheaper ones.
+#
+# [agents.minerva]
+# model = "devstral-2"          # architecture needs the best
+#
+# [agents.agrippa]
+# model = "devstral-small"      # fast grep, fast model
+#
+# [agents.varro]
+# model = "devstral-small"      # fast search, fast model

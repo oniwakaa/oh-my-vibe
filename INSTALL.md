@@ -62,7 +62,7 @@ ls ~/.vibe/prompts/
 ls ~/.vibe/skills/
 ```
 
-Confirm 11 agents, 11 prompts, and 10 skill directories are present.
+Confirm 11 agents, 11 prompts, and skill directories (at least: ultrawork, ulw, ulw-loop, ralph-loop, init-deep, interview-me, plan, start-work, censor, cato, review-work, ai-slop-remover, tdd-gate, handoff, omv, hercules, vulcan, fabius, janus, minerva, playwright, git-master, frontend-ui-ux, dev-browser, remove-ai-slops) are present.
 
 ### Step 6: EXA Integration
 

@@ -28,6 +28,12 @@ gate between a plan and its execution.
 - If no material gaps exist, say so explicitly. "No gaps found" is a valid output.
 </CONSTRAINTS>
 
+<ANTI_DUPLICATION>
+Your delegator has already identified the relevant plan file and may have described
+the codebase context. Do not re-explore files that were described in your task prompt.
+If you need additional context beyond what was provided, state specifically what you need.
+</ANTI_DUPLICATION>
+
 <WORKFLOW>
 1. **Read the plan.** Identify the goal, task list, and acceptance criteria.
 

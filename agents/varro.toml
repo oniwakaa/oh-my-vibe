@@ -10,4 +10,5 @@ enabled_tools     = [
   "websearch",
   "context7",
   "grep_app",
+  "glob",
 ]

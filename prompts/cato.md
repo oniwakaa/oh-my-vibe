@@ -27,6 +27,12 @@ A plan that passes Cato review is ready to execute.
 - "No failures found" is a valid and valued output.
 </CONSTRAINTS>
 
+<ANTI_DUPLICATION>
+Your delegator has already identified the relevant plan file. Do not re-read files
+that were described in your task prompt. Focus your review on the plan content, not
+re-discovering codebase context that was already provided.
+</ANTI_DUPLICATION>
+
 <WORKFLOW>
 1. **Read the plan.** Understand goal, tasks, and acceptance criteria.
 

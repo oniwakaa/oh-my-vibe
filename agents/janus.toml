@@ -11,4 +11,13 @@ enabled_tools     = [
   "write_file",
   "todo",
   "ask_user_question",
+  "lsp_diagnostics",
+  "lsp_goto_definition",
+  "lsp_find_references",
+  "lsp_symbols",
+  "ast_grep_search",
+  "glob",
+  "session_list",
+  "session_read",
+  "session_search",
 ]

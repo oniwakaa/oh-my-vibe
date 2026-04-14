@@ -50,23 +50,63 @@ automatically to the right model at runtime:
 | `deep` | Broad coding tasks | devstral-2 |
 | `unspecified-high` | General high-effort work | devstral-2 |
 
-### Skills (from `src/features/builtin-skills/skills/`)
+### Skills (26 total)
 
-oh-my-vibe has a built-in skill system that extends agent behaviors via SKILL.md
-files with YAML frontmatter. The following skill categories exist in source:
+#### Orchestration & Planning
 
 | Skill / Command | Purpose |
 |---|---|
 | `ultrawork` | Trigger Hercules full-auto mode: intent gate → plan → delegate → verify |
 | `ulw` | Alias for `ultrawork` (separate skill file, same behavior) |
 | `ulw-loop` | Continuous ultrawork loop (runs until explicitly stopped) |
-| `init-deep` | Generate hierarchical AGENTS.md files across the project tree |
-| `start-work` | Activate Fabius on the latest Janus plan |
-| `ralph-loop` | Retry loop — continues until 100% done |
+| `ultraworker` | Main orchestrator agent for complex multi-step tasks |
 | `interview-me` | Janus interview mode entry point |
 | `plan` | Alias for Janus planning mode |
+| `start-work` | Activate Fabius on the latest Janus plan |
+| `ralph-loop` | Retry loop — continues until 100% done |
+
+#### Plan Review
+
+| Skill / Command | Purpose |
+|---|---|
 | `censor` | Run Censor gap analysis on the current plan |
 | `cato` | Run Cato review; issues APPROVED / NOT APPROVED verdict |
+
+#### Quality & Verification
+
+| Skill / Command | Purpose |
+|---|---|
+| `review-work` | Post-implementation review with parallel verification swarm |
+| `ai-slop-remover` | Removes AI-generated code smells from a single file |
+| `remove-ai-slops` | Branch-wide AI slop removal and critical review |
+| `tdd-gate` | Enforces RED → GREEN → REFACTOR workflow |
+| `handoff` | Creates structured context summary for continuing work in a new session |
+
+#### Agent Switching
+
+| Skill / Command | Purpose |
+|---|---|
+| `hercules` | Switch to Hercules main orchestrator |
+| `vulcan` | Switch to Vulcan deep autonomous worker |
+| `janus` | Switch to Janus strategic planner |
+| `fabius` | Switch to Fabius plan executor |
+| `minerva` | Switch to Minerva architecture consultant |
+
+#### Browser & UI
+
+| Skill / Command | Purpose |
+|---|---|
+| `playwright` | Browser automation via Playwright MCP (testing, screenshots, scraping) |
+| `dev-browser` | Browser automation with persistent page state |
+| `frontend-ui-ux` | Designer-turned-developer for stunning UI/UX without mockups |
+
+#### Git & Project
+
+| Skill / Command | Purpose |
+|---|---|
+| `git-master` | Atomic commits, rebase/squash, history search (blame, bisect, log -S) |
+| `init-deep` | Generate hierarchical AGENTS.md files across the project tree |
+| `omv` | Display the oh-my-vibe boot message on demand |
 
 ### MCP Servers (Three-Tier System)
 

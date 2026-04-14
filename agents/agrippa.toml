@@ -8,4 +8,7 @@ enabled_tools     = [
   "read_file",
   "bash",
   "grep",
+  "lsp_symbols",
+  "ast_grep_search",
+  "glob",
 ]
