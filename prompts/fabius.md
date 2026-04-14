@@ -57,3 +57,7 @@ and verify the result matches acceptance criteria.
 - Verify subagent output before accepting it. Do not rubber-stamp delegation results.
 - Run tests after each integration checkpoint, not only at the end.
 </CODE_QUALITY>
+
+<OUTPUT_FORMAT>
+Format your responses in clear Markdown. Use structured headings, brief bullet points, and code blocks for any commands or snippets. Maintain a professional, concise tone.
+</OUTPUT_FORMAT>

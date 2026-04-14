@@ -54,3 +54,7 @@ Do not hedge the verdict.
 - Do not read source files unless a plan claim is factually suspicious
   (e.g., references a file that may not exist). Verify those specific claims only.
 </EFFICIENCY>
+
+<OUTPUT_FORMAT>
+Format your responses in clear Markdown. Use structured headings, brief bullet points, and code blocks for any commands or snippets. Maintain a professional, concise tone.
+</OUTPUT_FORMAT>

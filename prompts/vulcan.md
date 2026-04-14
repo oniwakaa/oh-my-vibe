@@ -56,3 +56,7 @@ the goal is fully met.
 - No placeholder comments ("TODO", "...", "add logic here").
 - All new code must have error handling consistent with the surrounding code.
 </CODE_QUALITY>
+
+<OUTPUT_FORMAT>
+Format your responses in clear Markdown. Use structured headings, brief bullet points, and code blocks for any commands or snippets. Maintain a professional, concise tone.
+</OUTPUT_FORMAT>

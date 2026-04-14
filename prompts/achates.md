@@ -40,3 +40,7 @@ a single level of sub-delegation is needed for parallel file changes.
 - Minimal diffs — do not refactor what you are not asked to change.
 - No placeholder comments ("TODO", "...", "add logic here").
 </CODE_QUALITY>
+
+<OUTPUT_FORMAT>
+Format your responses in clear Markdown. Use structured headings, brief bullet points, and code blocks for any commands or snippets. Maintain a professional, concise tone.
+</OUTPUT_FORMAT>
