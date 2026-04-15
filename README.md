@@ -156,6 +156,66 @@ See [UNINSTALL.md](./UNINSTALL.md) for details.
 
 ---
 
+## Why oh-my-vibe?
+
+**Competitive Advantages vs Alternatives:**
+
+| Feature | oh-my-vibe | Claude Code | OpenHands | Aider | Cline |
+|---------|------------|-------------|-----------|-------|-------|
+| Multi-Agent Orchestration | ✅ 11 specialized agents | ✅ Subagents | ✅ Hierarchical | ❌ Single | ❌ Single |
+| Verification Swarm | ✅ Parallel QA | ❌ Manual | ✅ QA instrumentation | ❌ None | ❌ Manual |
+| TDD Enforcement | ✅ RED→GREEN→REFACTOR | ❌ Manual | ⚠️ Optional | ✅ Auto-test | ❌ Manual |
+| Planning/Interview Mode | ✅ Janus interview | ✅ Plan mode | ✅ Planning agents | ❌ None | ✅ Plan/Act |
+| Git Best Practices | ✅ Atomic commits | ✅ Hooks | ⚠️ Basic | ✅✅ Deep auto-commit | ⚠️ Basic |
+| Browser Automation | ✅ Playwright MCP | ✅ Via MCP | ✅ BrowserGym | ❌ None | ✅ Built-in |
+| Model Flexibility | ⚠️ Devstral only | ❌ Claude only | ✅ 100+ models | ✅ 75+ providers | ✅ BYOK |
+
+### The Multi-Agent Difference
+
+Most coding agents are single-process. oh-my-vibe orchestrates **11 specialized agents**:
+
+1. **Hercules** (orchestrator) → Plans, delegates, verifies
+2. **Janus** (planner) → Interviews you, produces decision-complete plans
+3. **Fabius** (executor) → Executes Janus plans via delegation
+4. **Vulcan** (autonomous worker) → Give a goal, figures it out
+5. **Minerva** (architect) → Read-only analysis and recommendations
+6. **Censor** (gap analyzer) → Finds what's missing in plans
+7. **Cato** (reviewer) → APPROVED / NOT APPROVED verdicts
+8. **Agrippa** (search) → Fast codebase grep
+9. **Varro** (research) → Docs and OSS search
+10. **Achates** (implementer) → Scoped subtask execution
+11. **Argus** (vision) → Screenshot and diagram analysis
+
+### First 5 Minutes
+
+```
+vibe --agent hercules
+
+> /ultrawork Add a rate limiter to the /api/users endpoint
+
+[Hercules detects IMPLEMENT intent]
+[Hercules spawns Agrippa for codebase exploration]
+[Hercules creates todo list]
+[Hercules delegates implementation to Vulcan]
+[Vulcan implements, verifies tests pass]
+[Hercules runs /review-work verification swarm]
+[All verifiers PASS]
+✓ Task complete
+```
+
+### When to Use Each Agent
+
+| Task Type | Best Agent | Why |
+|-----------|------------|-----|
+| Any complex task | Hercules | Auto-routes, delegates, verifies |
+| "How does X work?" | Minerva | Read-only, no edits |
+| "Plan this feature" | Janus | Interview → decision-complete plan |
+| "Just fix it" | Vulcan | Autonomous, no hand-holding |
+| Architecture decisions | Minerva + Cato | Analysis + review |
+| Code review | /review-work | Parallel verification swarm |
+
+---
+
 ## Agent Tools
 
 Each agent has a specific set of Vibe CLI tools available. The orchestrator agents

@@ -45,6 +45,39 @@ If you hit 3 consecutive failures on the same issue:
 **Bugfix Rule**: Fix minimally. NEVER refactor while fixing a bug.
 </FAILURE_RECOVERY>
 
+<GRACEFUL_DEGRADATION>
+When encountering resource limitations or external failures:
+
+### Rate Limit Hit
+If API returns rate limit or quota exceeded:
+1. **REPORT** full error message to delegator
+2. **SUGGEST** switching to devstral-small: "/model devstral-small"
+3. **WAIT** for user confirmation before proceeding
+
+### MCP Server Unavailable
+If MCP server fails to connect:
+1. **REPORT** which server failed and which tasks are affected
+2. **PROCEED** with tools that are available
+3. **NOTE** in final report which capabilities were unavailable
+
+### Test Framework Not Found
+If tests requested but no framework detected:
+1. **ASK** user whether to skip tests or set up framework
+2. **WAIT** for user decision before proceeding
+
+### File Not Found
+If referenced file doesn't exist:
+1. **CHECK** if it's a typo or if file was renamed
+2. **REPORT** exact path and similar files if found
+3. **WAIT** for user confirmation before creating new file
+
+### Build Failure
+If build/lint fails:
+1. **CAPTURE** full error output
+2. **ANALYZE** root cause in context of implementation
+3. **REPORT** whether fix is within current scope or requires user decision
+</GRACEFUL_DEGRADATION>
+
 <SESSION_CONTINUATION>
 If called via the task tool, your output includes a session_id. Provide a clear summary
 at the end: goal achieved / partially achieved / blocked, with exact evidence.

@@ -13,36 +13,86 @@ allowed-tools:
 
 # TDD Gate
 
-The `/tdd-gate` command transforms the implementation process into a rigorous engineering discipline. It prevents the "code first, test later" anti-pattern.
+The `/tdd-gate` command transforms the implementation process into a rigorous engineering discipline. It prevents the "code first, test later" anti-pattern by enforcing test-first development.
 
-The agent must follow these exact phases in order:
+## Test Framework Auto-Detection
 
-1. **RED Phase**:
-   - Identify the expected behavior.
-   - Write a failing test case that precisely targets the new functionality.
-   - Run the test and **confirm it fails** with the laziest possible implementation (or no implementation at all).
-   - Evidence required: Output showing the test failure.
+The agent must auto-detect the project's test framework before starting:
 
-2. **GREEN Phase**:
-   - Write the *minimum amount of code* necessary to make the test pass.
-   - Run the test and **confirm it passes**.
-   - Evidence required: Output showing the test passage.
+| Language | Detection File | Test Command |
+|----------|----------------|--------------|
+| Node.js/TypeScript | `package.json` → "jest", "vitest", "mocha" | `npm test` / `pnpm test` |
+| Python | `pytest.ini`, `setup.cfg`, `pyproject.toml` | `pytest` / `python -m pytest` |
+| Rust | `Cargo.toml` → [dev-dependencies] test crates | `cargo test` |
+| Go | `*_test.go` files | `go test ./...` |
+| Ruby | `Gemfile` → "rspec", "minitest" | `bundle exec rspec` / `rails test` |
+| Java/Kotlin | `pom.xml` or `build.gradle` test deps | `mvn test` / `./gradlew test` |
 
-3. **REFACTOR Phase**:
-   - Clean up the implementation, remove redundancies, and ensure the code follows the codebase style.
-   - Run the test again and **confirm it still passes**.
-   - Evidence required: Output showing the test still passes after refactoring.
+## RED Phase
+
+1. **Identify expected behavior** from the user's request.
+2. **Auto-detect test framework** using table above.
+3. **Write a failing test** that targets the new functionality precisely.
+4. **Confirm RED**: Run test and capture failing output.
+   
+   ```
+   [TDD-GATE] Detected test framework: pytest
+   [TDD-GATE] Running: pytest tests/test_new_feature.py -v
+   [TDD-GATE] Result: FAILED - AssertionError: Expected X, got Y
+   [TDD-GATE] ✅ RED phase confirmed. Proceeding to GREEN.
+   ```
+
+## GREEN Phase
+
+1. **Write minimum code** to make the test pass — no extra features.
+2. **Confirm GREEN**: Run test and capture passing output.
+
+   ```
+   [TDD-GATE] Running: pytest tests/test_new_feature.py -v
+   [TDD-GATE] Result: PASSED - 1 test passed
+   [TDD-GATE] ✅ GREEN phase confirmed. Proceeding to REFACTOR.
+   ```
+
+## REFACTOR Phase
+
+1. **Clean up implementation** — remove redundancies, improve names, follow style.
+2. **Confirm STILL GREEN**: Run test and confirm it still passes.
+
+   ```
+   [TDD-GATE] Refactored: extracted helper function, improved naming
+   [TDD-GATE] Running: pytest tests/test_new_feature.py -v
+   [TDD-GATE] Result: PASSED - 1 test passed (after refactoring)
+   [TDD-GATE] ✅ All phases complete. Feature verified via TDD.
+   ```
 
 ## Usage
 
 ```
-/tdd-gate Implement the user password reset logic
+/tdd-gate Implement user authentication with JWT tokens
+/tdd-gate Add pagination to the products endpoint
+/tdd-gate Create a background job to process webhooks
 ```
 
 ## When to Use
-- For any logic-heavy task where the cost of a bug is high.
-- When implementing critical infrastructure or security-related features.
-- When the user specifically asks for a "test-driven" approach.
+
+- Logic-heavy features where bugs are costly
+- Security-related implementations (auth, encryption, permissions)
+- Core business logic that needs regression protection
+- When the user explicitly requests TDD
+- When implementing algorithms or data transformations
 
 ## Success Criteria
-The feature is considered complete only when there is a documented transition from RED to GREEN to REFACTOR, with terminal output proving each state.
+
+Feature is complete ONLY when:
+- [ ] Test framework auto-detected correctly
+- [ ] RED phase: Test fails with lazy/no implementation (output shown)
+- [ ] GREEN phase: Test passes with minimum implementation (output shown)
+- [ ] REFACTOR phase: Test still passes after cleanup (output shown)
+
+## Anti-Patterns
+
+❌ Writing implementation before test
+❌ Skipping RED confirmation
+❌ Adding features "while you're at it"
+❌ Writing tests that always pass (mocking wrong thing)
+❌ Refactoring before GREEN (broken tests are hard to refactor)

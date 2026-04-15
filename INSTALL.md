@@ -82,6 +82,28 @@ vibe --agent hercules
 
 ---
 
+### Rate Limits and Quotas
+
+Vibe CLI and oh-my-vibe use the Mistral API. Quotas vary by plan:
+
+| Plan | Devstral-2 Quota | Rate Limits | Notes |
+|------|------------------|-------------|-------|
+| Experiment | Limited | Aggressive | Free tier |
+| Le Chat Pro | Higher | Moderate | Paid subscription |
+| API Direct | Unlimited | Standard | Pay-per-use |
+
+**If you see "generating" freeze:** You've likely hit your quota.
+- Check quota: Visit https://console.mistral.ai
+- Switch model: Use `/model devstral-small` for faster/cheaper
+- Wait: Rate limits reset on sliding windows
+
+**EXA API (web search):**
+- Get free key at https://exa.ai (1000 requests/month free)
+- Add to `~/.vibe/.env`: `EXA_API_KEY=your_key_here`
+
+
+---
+
 ## Prerequisites
 
 | Requirement | How to satisfy |

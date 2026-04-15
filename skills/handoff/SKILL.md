@@ -36,3 +36,68 @@ The agent will synthesize the current state into a structured **Handoff Document
 - When switching from an orchestrator (Hercules) to a specialized implementer (Vulcan) for a long-term task.
 - When a task is too large for a single context window and needs to be broken across sessions.
 - Before handing off to a human reviewer.
+
+## Session Storage
+
+Handoff documents should be stored for context continuity:
+
+```
+~/.vibe/sessions/
+├── handoff-2026-01-15-auth-feature.md
+├── handoff-2026-01-16-rate-limiter.md
+└── handoff-2026-01-17-refactor-database.md
+```
+
+**Storage format:**
+
+```markdown
+# Handoff Document: [Feature Name]
+
+**Date**: 2026-01-15
+**Session ID**: ses_abc123
+**Agent**: Hercules
+
+## Current Status
+[What has been achieved]
+
+## Completed Work
+- File: src/auth/jwt.ts (lines 42-67) — JWT validation logic
+- File: tests/auth.test.ts (lines 15-30) — Test coverage added
+- Decision: Use RS256 algorithm (ES256 failed in some environments)
+
+## Pending Todos
+- [ ] in_progress: Add token refresh logic
+- [ ] pending: Update API documentation
+- [ ] pending: Add integration tests
+
+## Key Decisions
+- Chose JWT over session cookies (API-first, stateless)
+- Library: jsonwebtoken (most maintained)
+- Token expiry: 15 minutes (configurable)
+
+## Blocking Issues
+- Need DevOps approval for new environment variable (JWT_SECRET)
+- Redis not available in staging (token blacklisting blocked)
+
+## Immediate Next Steps
+1. Add JWT_SECRET to staging environment variables
+2. Implement token refresh in src/auth/refresh.ts
+3. Write integration tests for refresh flow
+
+## Context Map
+- Key files:
+  - src/auth/jwt.ts:42-67 (validation logic)
+  - src/middleware/auth.ts:15-30 (middleware integration)
+  - tests/auth.test.ts:15-30 (test coverage)
+- Related modules: user-service, rate-limiter (shared context)
+```
+
+## Resuming from Handoff
+
+When resuming:
+```
+/session [session-id]
+/handoff
+```
+
+The agent reads the handoff document, checks pending todos, and continues from the immediate next steps.

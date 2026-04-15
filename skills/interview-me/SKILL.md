@@ -43,6 +43,44 @@ Example:
 /interview-me I want to add rate limiting to the API gateway
 ```
 
+## Interview Workflow Examples
+
+### Example 1: Feature Planning
+```
+/interview-me I want to add real-time notifications to my app
+
+Janus will ask:
+1. What's the primary notification channel? (WebSocket, SSE, polling)
+2. Who receives notifications? (users, groups, tenant-scoped)
+3. What's the expected message volume?
+4. Do you need persistence for offline users?
+5. Should notifications be actionable in-app?
+```
+
+### Example 2: Architecture Decision
+```
+/interview-me Should I use GraphQL or REST for my API?
+
+Janus will explore:
+- Team experience with each
+- Client requirements (mobile, web, third-party)
+- Query complexity needs
+- Caching strategies
+- Real-time requirements
+```
+
+### Example 3: Database Migration
+```
+/interview-me I need to migrate from PostgreSQL to MongoDB
+
+Janus will ask:
+1. What's the primary driver? (scale, flexibility, cost)
+2. How complex are your current relationships?
+3. Do you need ACID transactions?
+4. What's your data migration timeline?
+5. Are there stored procedures to translate?
+```
+
 ## After the Interview
 
 Review the plan file, then run `/start-work` to hand it off to Fabius for execution.

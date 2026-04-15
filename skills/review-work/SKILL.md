@@ -16,13 +16,52 @@ allowed-tools:
 
 The `/review-work` command is the final quality gate. It prevents "it should work" syndrome by mandating a multi-perspective verification of the implementation before a task is marked complete.
 
-When invoked, the orchestrator will launch a **Verification Swarm** in parallel:
+## Verification Swarm Architecture
 
-1. **The Architect (Oracle)**: Verifies if the implementation satisfies the original Goal and all Constraints. Checks for architectural drift.
-2. **The Code Reviewer (Oracle)**: Analyzes for code quality, adherence to existing codebase patterns, and maintainability.
-3. **The Security Specialist (Oracle)**: Scans for common vulnerabilities, API key leaks, and security anti-patterns.
-4. **The QA Lead (Deep/Unspecified-High)**: Executes manual verification tests, runs the build, and confirms the observable success criteria are met.
-5. **The Context Miner (Deep/Unspecified-High)**: Checks for regressions in related modules and ensures no "collateral damage" was caused by the changes.
+When invoked, the orchestrator launches **5 parallel subagents**:
+
+| Agent | Category | Purpose | Pass Criteria |
+|-------|----------|---------|----------------|
+| Oracle (Goal) | unspecified-high | Verifies implementation satisfies original goal + constraints | All stated requirements met |
+| Oracle (Quality) | unspecified-high | Code quality, patterns, maintainability | No major smells, follows conventions |
+| Oracle (Security) | unspecified-high | Vulnerabilities, API key leaks, anti-patterns | No secrets, no SQL injection paths, no XSS vectors |
+| QA Lead (Deep) | deep | Manual verification tests, build execution | Tests pass, build succeeds |
+| Context Miner (Deep) | deep | Regressions in related modules | No unintended side effects |
+
+## Output Format
+
+The verification swarm produces structured output:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ VERIFICATION SWARM RESULTS                                  │
+├─────────────────────────────────────────────────────────────┤
+│ │ Verifier      │ Status │ Summary                         │
+│ │───────────────│────────│─────────────────────────────────│
+│ │ Goal (Oracle) │  ✓ PASS│ Goal met: rate limiter added   │
+│ │ Quality       │  ✓ PASS│ Follows existing patterns      │
+│ │ Security      │  ✓ PASS│ No secrets, no injection paths │
+│ │ QA (Deep)     │  ✓ PASS│ Build passes, tests pass       │
+│ │ Context       │  ✓ PASS│ No regressions in related code │
+├─────────────────────────────────────────────────────────────┤
+│ VERDICT: ✅ VERIFIED                                        │
+│ Summary: Implementation complete. 5/5 verifiers passed.      │
+│ Ready for commit. Use /git-master to create atomic commit. │
+└─────────────────────────────────────────────────────────────┘
+```
+
+If any verifier fails:
+
+```
+│ │ Security      │  ✗ FAIL│ Found hardcoded API key in src/config.ts:42 │
+├─────────────────────────────────────────────────────────────┤
+│ VERDICT: ❌ VERIFICATION FAILED                             │
+│ Required Actions:                                           │
+│ 1. Remove hardcoded API key from src/config.ts:42          │
+│ 2. Use environment variable instead                          │
+│ Run /review-work again after fixes.                         │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ## Usage
 
@@ -37,4 +76,5 @@ When invoked, the orchestrator will launch a **Verification Swarm** in parallel:
 - When the user requests "Check my work" or "Verify this implementation".
 
 ## Success Criteria
-The work is considered "Verified" only when all members of the swarm return a **PASS**. Any **FAIL** must be resolved before the task is closed.
+The work is considered "Verified" only when all 5 verifiers return **PASS**. 
+Any **FAIL** must be resolved before the task is closed.

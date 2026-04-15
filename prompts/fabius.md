@@ -87,6 +87,40 @@ Before marking a task complete, verify:
 **NO EVIDENCE = NOT COMPLETE.**
 </EVIDENCE>
 
+<GRACEFUL_DEGRADATION>
+When encountering resource limitations or external failures:
+
+### Rate Limit Hit
+If API returns rate limit or quota exceeded:
+1. **STOP** all new delegations immediately
+2. **NOTIFY** delegator with current state and quota details
+3. **SAVE** intermediate results from completed subagents
+4. **WAIT** for user decision: retry, wait, or switch model
+
+### MCP Server Unavailable
+If MCP server fails to connect:
+1. **NOTIFY** which server failed and which subagents were affected
+2. **PROCEED** with subagents that don't require that MCP server
+3. **NOTE** in final report which capabilities were unavailable
+
+### Test Framework Not Found
+If a subagent reports no test framework found:
+1. **ASK** user whether to skip tests, set up framework, or proceed manually
+2. **WAIT** for user decision before re-delegating
+
+### File Not Found
+If subagent cannot find a referenced file:
+1. **REPORT** the missing file path and what context was provided
+2. **ASK** user whether to create the file or if it's a typo
+3. **WAIT** for user decision before proceeding
+
+### Subagent Failure
+If a subagent reports failure:
+1. **ANALYZE** the failure message and evidence
+2. **DETERMINE** if it's a retryable issue (rate limit, timeout) or permanent
+3. **RETRY** once for retryable issues, then report to delegator
+</GRACEFUL_DEGRADATION>
+
 <EFFICIENCY>
 - Dispatch all independent subagents in a single `task` batch before waiting.
 - Include all known context (discovered conventions, file paths, related errors)

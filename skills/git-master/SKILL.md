@@ -46,6 +46,68 @@ Use `/git-master` when you need to perform any git operation, especially:
 
 3. **One logical change per commit**: Each commit should represent one atomic, reviewable change.
 
+### Atomic Commit Checklist
+
+Before committing, verify:
+- [ ] All changed files are related to ONE logical change
+- [ ] Tests pass for this specific change
+- [ ] Commit subject is under 50 characters
+- [ ] Commit subject uses imperative mood ("add" not "added")
+- [ ] Body explains WHY (context), not HOW (implementation)
+- [ ] No commented-out code
+- [ ] No debug prints or console.logs
+
+### Commit Body Template
+
+For non-trivial changes, use this body structure:
+
+```
+feat(auth): add JWT token validation
+
+- Add validateJwt() function with RS256 support
+- Integrate token validation in auth middleware
+- Add environment variable for JWT_SECRET
+
+Why: Previous auth used session cookies which don't scale
+     for API-first microservices architecture.
+
+Breaking: Session-based auth endpoints removed.
+Migration: Clients must use /auth/token endpoint.
+```
+
+### Interactive Staging
+
+```bash
+# Stage specific hunks
+git add -p
+
+# For each hunk, answer:
+# y = stage this hunk
+# n = skip this hunk
+# s = split into smaller hunks
+# q = quit
+```
+
+### Example: Atomic Commits for a Feature
+
+```bash
+# Commit 1: Database schema
+git add db/migrations/001_add_users_table.sql
+git commit -m "feat(db): add users table schema"
+
+# Commit 2: Model layer
+git add src/models/user.ts
+git commit -m "feat(models): add User model with password hashing"
+
+# Commit 3: API layer
+git add src/api/users.ts
+git commit -m "feat(api): add user registration endpoint"
+
+# Commit 4: Tests
+git add tests/api/users.test.ts
+git commit -m "test(api): add registration endpoint tests"
+```
+
 ### Rebase/Squash
 
 - Use `git rebase -i` for interactive rebase.

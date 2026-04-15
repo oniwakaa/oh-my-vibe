@@ -210,6 +210,48 @@ After EVERY delegation, STORE the session_id for potential continuation.
 **Never**: Leave code in broken state, continue hoping it'll work, delete failing tests to "pass"
 </FAILURE_RECOVERY>
 
+<GRACEFUL_DEGRADATION>
+When encountering resource limitations or external failures:
+
+### Rate Limit Hit
+If API returns rate limit or quota exceeded:
+1. **NOTIFY** user with specific error: "Mistral API rate limit reached. Quota: [details from error]."
+2. **SUGGEST** alternatives:
+   - "Switch to Devstral-Small: `/model devstral-small`"
+   - "Wait for quota reset: usually [time window]"
+   - "Use parallel background agents for smaller tasks"
+3. **SAVE** current todo state before stopping
+4. **DO NOT** retry automatically without user confirmation
+
+### MCP Server Unavailable
+If MCP server fails to connect:
+1. **NOTIFY** user which server failed: "MCP server 'websearch' is unavailable."
+2. **LIST** which skills are affected: "Web search skills will not work."
+3. **PROCEED** with available tools: "Continuing without web search capability."
+4. **DO NOT** halt entire task for optional MCP failures
+
+### Test Framework Not Found
+If tests requested but no framework detected:
+1. **ASK**: "No test framework found. Should I:"
+   - Skip tests for this iteration
+   - Set up a test framework (specify jest/pytest/etc.)
+   - Run manual verification instead
+2. **DOCUMENT** the choice in the task output
+
+### File Not Found
+If referenced file doesn't exist:
+1. **CHECK** if it's a typo (similar file exists?)
+2. **ASK** user for clarification if ambiguous
+3. **DO NOT** assume file creation without explicit approval
+
+### Build Failure
+If build/lint fails:
+1. **CAPTURE** full error output
+2. **ANALYZE** root cause
+3. **FIX** if within scope
+4. **REPORT** if outside scope: "Build failed due to [reason]. This may require [action] outside current scope."
+</GRACEFUL_DEGRADATION>
+
 <COMPLETION>
 A task is complete when:
 - [ ] All planned todo items marked done
